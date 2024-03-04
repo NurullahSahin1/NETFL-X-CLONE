@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { baseImgUrl } from "../constants";
+import Loader from "./Loader";
+
 const Hero = () => {
   const store = useSelector((store) => store.movieReducer);
 
@@ -9,12 +11,12 @@ const Hero = () => {
   const randomMovie = store.popularMovies[i];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 p-4 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:max-h-[400px] gap-5 mb-10">
       {!randomMovie ? (
-        <p>Yükleniyor...</p>
+        <Loader />
       ) : (
         <>
-          <div className="flex flex-col gap-3 items-center justify-between">
+          <div className="flex flex-col items-center justify-between gap-6">
             <h1 className="text-3xl font-bold">{randomMovie.title}</h1>
             <p className="text-start">{randomMovie.overview}</p>
             <p>
@@ -32,9 +34,9 @@ const Hero = () => {
               </button>
             </div>
           </div>
-          <div>
+          <div className="justify-center">
             <img
-              className="my-4 img-fluid rounded hero-img"
+              className="my-4 img-fluid object-contain rounded hero-img md:max-h-[300px]"
               src={baseImgUrl.concat(randomMovie.backdrop_path)}
               alt={randomMovie.title}
             />

@@ -11,3 +11,10 @@ body {
 .hero-img {
   filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.336));
 }
+
+.Loader_wrapper {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
